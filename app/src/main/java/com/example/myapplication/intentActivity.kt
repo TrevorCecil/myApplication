@@ -7,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -40,8 +41,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
@@ -103,6 +107,7 @@ fun MyIntents(){
                 }
             })
         Spacer(modifier = Modifier.height(100.dp))
+        //Stk
         OutlinedButton(
             onClick = {
                 val simToolKitLaunchIntent =
@@ -119,12 +124,13 @@ fun MyIntents(){
             androidx.compose.material3.Text(text = "MPESA", color = Color.White)
 
         }
+        //Email
         OutlinedButton(
             onClick = {
                 val shareIntent = Intent(Intent.ACTION_SEND)
                 shareIntent.type = "text/plain"
-                shareIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("akinyiglory2@gmail.com"))
-                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "subject")
+                shareIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("trevorcecil583@gmail.com"))
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Application for a job")
                 shareIntent.putExtra(Intent.EXTRA_TEXT, "Hello, this is the email body")
                 mContext.startActivity(shareIntent)
             },
@@ -138,9 +144,10 @@ fun MyIntents(){
             androidx.compose.material3.Text(text = "EMAIL", color = Color.White)
 
         }
+        //sms
         OutlinedButton(
             onClick = { val smsIntent=Intent(Intent.ACTION_SENDTO)
-                smsIntent.data="smsto:0720245837".toUri()
+                smsIntent.data="smsto:0769785789".toUri()
                 smsIntent.putExtra("sms_body","Hello Glory,how was your day?")
                 mContext.startActivity(smsIntent) },
             modifier = Modifier
@@ -153,10 +160,11 @@ fun MyIntents(){
             androidx.compose.material3.Text(text = "SMS", color = Color.White)
 
         }
+        //call
         OutlinedButton(
             onClick = {
                 val smsIntent=Intent(Intent.ACTION_SENDTO)
-                smsIntent.data="smsto:0720245837".toUri()
+                smsIntent.data="smsto:0769785789".toUri()
                 smsIntent.putExtra("sms_body","Hello Glory,how was your day?")
                 mContext.startActivity(smsIntent)
             },
@@ -193,7 +201,7 @@ fun MyIntents(){
             onClick = {
                 val shareIntent=Intent(Intent.ACTION_SEND)
                 shareIntent.type="text/plain"
-                shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out this is a cool content")
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "https://github.com/TrevorCecil/myApplication")
                 mContext.startActivity(Intent.createChooser(shareIntent, "Share"))
             },
             modifier = Modifier
@@ -206,6 +214,19 @@ fun MyIntents(){
             androidx.compose.material3.Text(text = "SHARE", color = Color.White)
 
         }
+        Spacer(modifier = Modifier.height(20.dp))
+        androidx.compose.material3.Text(
+            text = "Don't have an account ? Register",
+            fontSize = 15.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable {mContext.startActivity(Intent(mContext,FormActivity::class.java))
+                },
+            textAlign = TextAlign.Center,
+            color = Color.White,
+            fontWeight = FontWeight.Bold
+
+        )
 
     }
 }

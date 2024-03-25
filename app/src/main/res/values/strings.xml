@@ -2,4 +2,5 @@
     <string name="app_name">My Application</string>
     <string name="title_activity_layout">LayoutActivity</string>
     <string name="title_activity_intent">intent</string>
+    <string name="title_activity_form">FormActivity</string>
 </resources>

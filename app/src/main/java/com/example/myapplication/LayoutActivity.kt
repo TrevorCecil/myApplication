@@ -83,7 +83,7 @@ fun Layout(){
                 IconButton(onClick = {
                     val shareIntent=Intent(Intent.ACTION_SEND)
                     shareIntent.type="text/plain"
-                    shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out this is a cool content")
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, "https://github.com/TrevorCecil/myApplication")
                     mContext.startActivity(Intent.createChooser(shareIntent, "Share"))
                 }) {
                     Icon(imageVector = Icons.Default.Share, contentDescription = "share",
